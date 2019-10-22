@@ -42677,6 +42677,11 @@ function () {
   }
 
   Object(_home_luka_workspace_dh_opsport_plugin_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(CatsAndDogsPlugin, [{
+    key: "getPluginId",
+    value: function getPluginId() {
+      return 'catsanddogs';
+    }
+  }, {
     key: "getPluginComponent",
     value: function getPluginComponent() {
       return _App__WEBPACK_IMPORTED_MODULE_2__["default"];
@@ -42695,11 +42700,6 @@ function () {
     key: "attachPluginToNode",
     value: function attachPluginToNode(node) {
       react_dom__WEBPACK_IMPORTED_MODULE_3___default.a.render(react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), node);
-    }
-  }], [{
-    key: "getPluginId",
-    value: function getPluginId() {
-      return 'catsanddogs';
     }
   }]);
 
