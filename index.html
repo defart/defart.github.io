@@ -23,13 +23,13 @@ client.init().then(
 		
 		sdk.getUserName().then(
 			username => {
-				document.querySelector('#name').innerText = 'Hello, ' + username;
+				document.querySelector('#name').innerText = 'Hello, ' + username.payload;
 			}
 		); 
 		
 		sdk.getAccessToken().then(
 			at => {
-				document.querySelector('#token').innerText = at;
+				document.querySelector('#token').innerText = at.payload;
 			}
 		);
 	});
