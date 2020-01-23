@@ -22,11 +22,15 @@ client.init().then(
 	sdk => {
 		
 		sdk.getUserName().then(
-			username => document.querySelector('#name').innerText = 'Hello, ' + username;
+			username => {
+				document.querySelector('#name').innerText = 'Hello, ' + username;
+			}
 		); 
 		
 		sdk.getAccessToken().then(
-			at => document.querySelector('#token').innerText = at;
+			at => {
+				document.querySelector('#token').innerText = at;
+			}
 		);
 	});
 </script>
