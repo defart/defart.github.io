@@ -1,1 +1,35 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Iframe Plugin Demo</title></head><body><h1>Iframe Plugin Demo</h1><p id="name">Hello, _______</p><p id="token">AT</p><hr><button id="getBrew">Get Brewery (make call trough sdk)</button><hr><p id="brew"></p><script src="js/1.b5d3bbae.chunk.js"></script><script src="js/app.19962967.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>
+Iframe Plugin Demo</title>
+</head>
+<body>
+<h1>
+Iframe Plugin Demo</h1>
+<p id="name">
+Hello, _______</p>
+<p id="token">
+AT</p>
+<hr>
+<script src="js/main.min.js"></script>
+<script type="application/javascript">
+const client = new opsapiIframe('http://localhost:3000');
+
+client.init().then(
+	sdk => {
+		
+		sdk.getUserName().then(
+			username => document.querySelector('#name').innerText = 'Hello, ' + username;
+		); 
+		
+		sdk.getAccessToken().then(
+			at => document.querySelector('#token').innerText = at;
+		);
+	});
+</script>
+</script>
+</body>
+</html>
