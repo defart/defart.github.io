@@ -1,0 +1,48 @@
+<!doctype html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+            <title>
+                Iframe Plugin Demo</title>
+        </head>
+        <body style="background-color: aqua">
+        <h1> Iframe Plugin Demo over UMD opsapi-iframe</h1>
+        
+        <p id="name">  Hello, _______</p>
+        <hr>
+        <p id="token">AT</p>
+        <hr>
+        <button id="brew" >Random brewery</button>
+        <script src="https://defart.github.io/opsportal.min.js"></script>
+        
+        <script type="application/javascript">
+            const client = new Client('http://localhost:3000');
+            client.init().then(
+                sdk => {
+        
+                    sdk.getUserName().then(
+                        username => {
+                            document.querySelector('#name').innerText = 'Hello, ' + username.payload;
+                        }
+                    );
+        
+                    sdk.getAccessToken().then(
+                        at => {
+                            document.querySelector('#token').innerText = at.payload;
+                        }
+                    );
+                    
+                    document.querySelector('#brew').addEventListener('click', () => {
+                        const random = Math.ceil(Math.random() * 5000);
+                        sdk.call('https://api.openbrewerydb.org/breweries/' + random, null, {}, 'GET').then(
+                            msg => {
+                                const brew = msg.payload.data;
+                                alert(brew.name  + ' ' + brew.street + ',' + brew.city + ' ' + brew.state + '' + brew.country);
+                            }
+                        )
+                    });
+                });
+        </script>
+        </body>
+        </html>
