@@ -24,7 +24,7 @@
         console.log(sdk);
         console.log(sdk.getUser().then(user => console.log(user)));
 
-        sdk.getAccessToken(function(at) { console.log("ATATATA", at, arguments)});
+        sdk.getAccessToken(function(err, at) { console.log("ATATATA", at, arguments)});
 
     });
 </script>
