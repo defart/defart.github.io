@@ -6,7 +6,7 @@
     <title>
         Iframe Plugin Demo</title>
 </head>
-<body style="background-color: rgb(68, 179, 34)">
+<body style="background-color: rgb(224, 0, 30)">
 <h1> AyAyIframe Plugin Demo over UMD opsapi-iframe</h1>
 
 <p id="name">  Hello, _______</p>
@@ -21,9 +21,10 @@
     const client = new opsapiIframe('http://localhost:3000');
 
     const onInit = (sdk) => {
-        sdk.getUserName().then(
-                username => {
-                    document.querySelector('#name').innerText = 'Hello, ' + username.payload;
+        console.log(sdk);
+        sdk.getUser().then(
+                user => {
+                    document.querySelector('#name').innerText = 'Hello, ' + user.email;
                 }
             );
 
