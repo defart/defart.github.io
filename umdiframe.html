@@ -24,7 +24,7 @@
         console.log(sdk);
         console.log(sdk.getUser().then(user => console.log(user)));
 
-        sdk.getAccessToken().then(at => alert(at));
+        sdk.getAccessToken(function(at) { console.log("ATATATA", at)});
 
     });
 </script>
