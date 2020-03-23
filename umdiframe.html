@@ -21,6 +21,7 @@
     const client = new opsapiIframe('http://localhost:3000');
 
     const onInit = (sdk) => {
+        debugger;
         console.log(sdk);
         sdk.getUser().then(
                 user => {
