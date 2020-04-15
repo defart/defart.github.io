@@ -3,28 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>
-        Iframe Plugin Demo</title>
+    <title>External Plugin Demo</title>
+    <script src="/JUEMDE.js"></script>
 </head>
-<body style="background-color: rgb(90, 5, 5)">
-<h1> Yuuuuuuuup </h1>
+<body style="background-color: lightseagreen;">
 
 <p id="name">  Hello, _______</p>
-<hr>
-<p id="token">AT</p>
-<hr>
-<button id="brew" >Random brewery</button>
-
-<script src="/JUEMDE.js"></script>
 
 <script type="application/javascript">
-    const client = new opsapiIframe('http://localhost:3000');
-
-    client.init().then(sdk => {
-        console.log(sdk);
-        console.log(sdk.getUser().then(user => console.log(user)));
-
-        sdk.getAccessToken(function(err, at) { console.log("ATATATA", at, arguments)});
+    (new opsapiIframe('http://localhost:3000'))
+    .init()
+    .then(sdk => {
+        
+        sdk.getUser().then(
+            user => document.querySelector('#name').textContent = `Hello, ${user.name}`
+        );
 
     });
 </script>
