@@ -14,7 +14,7 @@
     (new opsapiIframe('http://localhost:3000'))
     .init()
     .then(sdk => {
-        
+        sdk.setPluginLoaded();
         sdk.getUser().then(
             user => document.querySelector('#name').textContent = `Hello, ${user.name}`
         );
