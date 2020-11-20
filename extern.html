@@ -16,12 +16,16 @@
     (new opsapiIframe('http://localhost:3000'))
     .init()
     .then(sdk => {
+        window.esdi = sdk;
         sdk.setPluginLoaded();
         sdk.getUser().then(
             user => document.querySelector('#name').textContent = `Hello, ${user.name}`
         );
 
-        document.querySelector('#alertButton').addEventListener('click', () => sdk.alert.set('This alert came from an external plugin!'))
+        document.querySelector('#alertButton').addEventListener('click', () => {
+            console.log('clicked');
+            sdk.alert.set('This alert came from an external plugin!')
+        })
 
     })
     .catch(e => {
