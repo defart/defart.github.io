@@ -6,12 +6,15 @@
     <title>External Plugin Demo</title>
     <script src="https://storage.googleapis.com/opsportal-build/opsportal-umd-latest.js"></script>
 </head>
-<body style="background-color: lightcoral;">
+<body style="background-color: cornflowerblue;">
 
 <h1> Iframe Opsportal 1.11.1 </h1>
 <p id="name"> Hello, --- </p>
+<button id="themeButton">Get Theme</button>
+<button id="i18NButton">Get Translations Resource</button>
 <button id="alertButton">Show Alert</button>
-
+<hr/>
+<textarea id="dump">...</textarea>
 <script type="application/javascript">
     (new opsapiIframe('http://localhost:3000'))
     .init()
@@ -21,6 +24,14 @@
         sdk.getUser().then(
             user => document.querySelector('#name').textContent = `Hello, ${user.name}`
         );
+
+        document.querySelector('#themeButton').addEventListener('click', () => {
+            sdk.extendMuiTheme({}).then(r => document.querySelector('#dump').innerHTML = JSON.stringify(r))
+        })
+
+        document.querySelector('#i18NButton').addEventListener('click', () => {
+            sdk.getI18nResource({}).then(r => document.querySelector('#dump').innerHTML = JSON.stringify(r))
+        })
 
         document.querySelector('#alertButton').addEventListener('click', () => {
             console.log('clicked');
