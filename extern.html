@@ -10,6 +10,7 @@
 
 <h1> Iframe Opsportal 1.11.1 </h1>
 <p id="name"> Hello, --- </p>
+<button id="googleButton">Get Google Token</button>
 <button id="themeButton">Get Theme</button>
 <button id="i18NButton">Get Translations Resource</button>
 <button id="alertButton">Show Alert</button>
@@ -24,6 +25,10 @@
         sdk.getUser().then(
             user => document.querySelector('#name').textContent = `Hello, ${user.name}`
         );
+
+        document.querySelector('#googleButton').addEventListener('click', () => {
+            sdk.getGoogleToken({}).then(r => document.querySelector('#dump').innerHTML = JSON.stringify(r))
+        })
 
         document.querySelector('#themeButton').addEventListener('click', () => {
             sdk.extendMuiTheme({}).then(r => document.querySelector('#dump').innerHTML = JSON.stringify(r))
